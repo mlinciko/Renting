@@ -1,0 +1,16 @@
+<img class="signin-image" src="../../../../../assets/icons/default-icon.png" alt="">
+<div class="signin-container">
+  <div class="signin-title">Let's you in</div>
+    <dx-button
+        class="signin-button"
+        stylingMode="contained"
+        text="Sign in with password"
+        type="default"
+        [width]="200"
+        (onClick)="login()"
+      >
+    </dx-button>
+    <div class="signin-registry">
+      Don't have an account? <span class="signin-registry-link" (click)="registry()">Sign up</span>
+    </div>
+</div>

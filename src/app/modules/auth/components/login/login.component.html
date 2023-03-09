@@ -1,0 +1,14 @@
+<img class="login-image" src="../../../../../assets/icons/login.png" alt="">
+<div class="login-container">
+  <div class="login-title">Login to Your Account</div>
+  <dx-form #form width="300px" [(formData)]='formData' [items]="formItems">
+  </dx-form>
+  <dx-button
+        stylingMode="contained"
+        text="Sign in"
+        type="default"
+        width="100%"
+        (onClick)="submitForm()"
+    >
+  </dx-button>
+</div>
