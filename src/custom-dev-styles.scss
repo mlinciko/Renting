@@ -99,3 +99,24 @@
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-after {
   border-color: #d9534f;
 }
+
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span {
+  color:#d9534f;
+}
+
+.dx-checkbox-checked .dx-checkbox-icon {
+  color:#264ABD;
+}
+
+.dx-checkbox-checked.dx-state-focused .dx-checkbox-icon,
+.dx-checkbox-checked.dx-state-hover .dx-checkbox-icon,
+.dx-checkbox.dx-state-hover .dx-checkbox-icon,
+.dx-checkbox.dx-state-focused .dx-checkbox-icon   {
+  border: 2px solid #264ABD;
+  border-radius:5px;
+}
+
+.dx-checkbox-icon {
+  border-radius:5px;
+}

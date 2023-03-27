@@ -6,6 +6,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { DefaultComponent } from './components/default/default.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistryComponent } from './components/registry/registry.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -20,6 +22,7 @@ import { RegistryComponent } from './components/registry/registry.component';
     CommonModule,
     AuthRoutingModule,
     DevExtremeModule,
-  ]
+    FontAwesomeModule,
+  ],
 })
 export class AuthModule { }

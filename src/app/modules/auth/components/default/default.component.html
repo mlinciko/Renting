@@ -7,10 +7,10 @@
         text="Sign in with password"
         type="default"
         [width]="200"
-        (onClick)="login()"
+        [routerLink]="['/sign/in']"
       >
     </dx-button>
     <div class="signin-registry">
-      Don't have an account? <span class="signin-registry-link" (click)="registry()">Sign up</span>
+      Don't have an account? <span class="signin-registry-link" [routerLink]="['/sign/up']">Sign up</span>
     </div>
 </div>

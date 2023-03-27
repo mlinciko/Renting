@@ -15,11 +15,11 @@ const routes: Routes = [
         component: DefaultComponent,
       },
       {
-        path: 'login',
+        path: 'in',
         component: LoginComponent,
       },
       {
-        path: 'registry',
+        path: 'up',
         component: RegistryComponent,
       },
     ]

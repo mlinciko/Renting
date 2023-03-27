@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IDxFormItems } from 'src/app/models/models';
 import { Utils } from 'src/app/utils/ulits.class';
 import { DxFormComponent } from 'devextreme-angular';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../../services/auth.service';
+import { IAuthResponse, ILoginPayload } from '../../models/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +15,17 @@ import { DxFormComponent } from 'devextreme-angular';
 export class LoginComponent implements OnInit {
   @ViewChild('form') form!: DxFormComponent;
   formItems!: IDxFormItems;
-  formData = {};
+  formData: ILoginPayload = {
+    username: "",
+    password: "",
+  };
+  rememberMe: boolean | any = false;
+  backIcon = faArrowLeft;
 
-  constructor() { }
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.initFormItems()
@@ -23,8 +35,8 @@ export class LoginComponent implements OnInit {
     this.formItems = [
       {
         editorType: 'dxTextBox',
-        dataField: 'email',
-        label: { text: 'Email', visible: false },
+        dataField: 'username',
+        label: { text: 'Login', visible: false },
         editorOptions: {
           labelMode: 'floating'
         },
@@ -39,13 +51,18 @@ export class LoginComponent implements OnInit {
           mode: 'password',  
         },
         validationRules: [Utils.requiredRule()],
-      }
+      },
     ]
   }
 
   submitForm(): void {
     if (this.form.instance.validate().isValid){
-      console.log(this.formData);
+      this.auth.login(this.formData, this.rememberMe)
+      .subscribe((res: IAuthResponse) => {
+        if (res.status) {
+          this.router.navigate(["/"]);
+        }
+      })
     } 
   }
 

@@ -18,8 +18,8 @@ export class Utils {
   public static passwordLengthRule(): StringLengthRule {
     return {
       type: "stringLength",
-      min: 5,
-      max: 30,
+      min: 8,
+      max: 1024,
       message: "Invalid password range",
     };
   }
