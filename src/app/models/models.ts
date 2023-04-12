@@ -26,3 +26,10 @@ export interface IUser {
 export interface IRole {
   name: string;
 }
+
+export interface IGuardPathes {
+  regExp: RegExp | string;
+  roles: string[];
+  message: string;
+  additionalRule?: "tokenDosentExsists" | "tokenDosentExpired",
+}

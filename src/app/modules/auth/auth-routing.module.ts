@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './components/default/default.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistryComponent } from './components/registry/registry.component';
+import { AppGuard } from 'src/app/app.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AuthRootComponent,
+    // canActivate: [AppGuard],
     children:[
       {
         path: '',

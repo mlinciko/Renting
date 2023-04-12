@@ -1,0 +1,32 @@
+<ng-container *ngIf="data.length > 0; else notFound">
+  <div class="announcements-container">
+      <div *ngFor="let item of data" class="announcement">
+        <div class="announcement-image">
+          <div *ngIf="item.property?.owner?.rating" class="announcement-rating">
+            <fa-icon class="announcement-rating-icon" [icon]="starIcon"></fa-icon>
+            {{item.property.owner.rating | number: '1.1-1'}}
+          </div>
+          <img [src]="getUserImage(item)" alt="Image">
+        </div>
+        <div class="announcement-title">{{item.description}}</div>
+        <div class="announcement-price">
+          <span class="announcement-price-currency">
+            <fa-icon [icon]="currencyIcon"></fa-icon>
+            {{item.price}}
+          </span> 
+          / {{item.type | announcementType}}
+        </div>
+      </div>
+  </div>
+</ng-container>
+<ng-template #notFound>
+  <div class="announcement-not-found">
+    <img src="../../../../../assets/icons/not-found.svg" alt="Not found">
+    <div class="announcement-not-found__title">
+      Not Found
+    </div>
+    <div class="announcement-not-found__subtitle">
+      Sorry, the keyword you entered cannot be found, please check again or search with another keyword.
+    </div>
+  </div>
+</ng-template>

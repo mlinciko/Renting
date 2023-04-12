@@ -1,0 +1,1 @@
+export type IHousing = "SECONDARY" | "NEW_CONSTRUCTION";

@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from '../modules/auth/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -26,8 +26,8 @@ export class TokenInterceptor implements HttpInterceptor {
     if (this.isExcludedUrl(request.url)) {
       return next.handle(request);
     }
-
-    if (!this.auth.isTokenExpired) {
+    console.log(this.auth.isTokenExpired())
+    if (!this.auth.isTokenExpired()) {
       request = request.clone({
         headers: request.headers.set('Authorization', this.auth.getToken())
       })
@@ -35,13 +35,6 @@ export class TokenInterceptor implements HttpInterceptor {
     } 
     
     return next.handle(request)
-    .pipe(
-      catchError(
-        (err) => {
-          this.router.navigate(["/sign"]);
-          return throwError(err);
-      })
-    )
   }
 
   isExcludedUrl(currentUrl: string): boolean {

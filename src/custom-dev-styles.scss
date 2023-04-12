@@ -120,3 +120,15 @@
 .dx-checkbox-icon {
   border-radius:5px;
 }
+
+.dx-toast-error .dx-toast-icon {
+  display:none;
+}
+
+.dx-toast-content {
+  font-weight: 400;
+}
+
+.dx-toast-error {
+  background-color: rgba(217, 83, 79, 0.8);
+}

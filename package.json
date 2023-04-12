@@ -38,6 +38,7 @@
     "@angular/cli": "~14.2.1",
     "@angular/compiler-cli": "^14.0.0",
     "@types/jasmine": "~4.0.0",
+    "@types/lodash": "^4.14.192",
     "devextreme-cli": "latest",
     "devextreme-themebuilder": "^22.2.4",
     "jasmine-core": "~4.3.0",

@@ -16,9 +16,11 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private auth: AuthService
-  ) {
+  ) {}
+
+  initializeUser(): void {
     if (this.auth.isTokenExists()) {
-      this.getUser();
+      this.getCurrentUser();
     }
   }
 
@@ -27,28 +29,52 @@ export class UserService {
     return token.userId
   }
 
-  getUser(): void {
-    const userId = this.getUserIdByToken();
-    this.http.get(`${this.restUrl}/${userId}`)
+  getCurrentUser(): void {
+    this.http.get(`${this.restUrl}/current`)
     .pipe(
       map(
         (res: any) => {
           if (res) {
-            this.initUser(res)
+            console.log(res);
+            this.setUser(res)
           }
         }
       ),
-      catchError((err) => this.onCatchError(err, err.error.message ? err.error.message: "User data error"))
+      catchError((err) => {
+        if (err.status !== 409) {
+          this.onCatchError(err, err.error.message ? err.error.message: "Can't get current user!")
+        } 
+        return throwError(err);
+      })
     )
     .subscribe();
   }
 
-  isUserAuthrized(): boolean {
-    return !!this.user.value.id;
+  getUserById(userId: number): Observable<IUser> {
+    return this.http.get<IUser>(`${this.restUrl}/${userId}`)
+    .pipe(
+      catchError((err) => this.onCatchError(err, err.error.message ? err.error.message: "User data error"))
+    )
   }
 
-  initUser(user: IUser | null) {
+  isUserAuthrized(): boolean {
+    return !!this.user.value;
+  }
+
+  setUser(user: IUser | null) {
     this.user.next(user)
+  }
+
+  checkRoles(roles: string[]): boolean {
+    if (roles.length === 0) {
+      return true;
+    }
+    for (const role of this.user.value.roles) {
+      if (roles.includes(role.name)){
+        return true;
+      }
+    }
+    return false;
   }
 
   onCatchError(err: HttpErrorResponse, message: string): Observable<never> {

@@ -1,0 +1,1 @@
+export type AnnouncementRentType = "DAILY_RENT" | "MONTHLY_RENT" | "SELL";

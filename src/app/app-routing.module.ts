@@ -2,31 +2,34 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { MainRootComponent } from './modules/main/components/main-root/main-root.component';
 
 const routes: Routes = [
   {
+    path: "sign",
+    loadChildren: () =>
+      import("./modules/auth/auth.module").then(
+        (m) => m.AuthModule
+      ),
+  },
+  {
     path: "",
+    component: MainRootComponent,
     children: [
       {
-        path: "sign",
+        path: "",
         loadChildren: () =>
-          import("./modules/auth/auth.module").then(
-            (m) => m.AuthModule
-          ),
-      },
-    ] 
-  }
+        import("./modules/catalog/catalog.module").then(
+          (m) => m.CatalogModule
+        ),
+      }
+    ]
+  },
+  { path: "**", redirectTo: ""}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    },
-  ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

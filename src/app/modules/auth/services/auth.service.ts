@@ -13,13 +13,15 @@ const helper = new JwtHelperService();
   providedIn: 'root'
 })
 export class AuthService {
-  restUrl = `${environment.backUrl}api/`
+  restUrl = `${environment.backUrl}/api/`
 
-  private accessToken: BehaviorSubject<string> = new BehaviorSubject('');
+  public accessToken: BehaviorSubject<string> = new BehaviorSubject("");
   constructor(
     private http: HttpClient,
     private router: Router,
-  ) { 
+  ) { }
+
+  initializeToken(): void {
     const token = localStorage.getItem("access_token");
     this.accessToken.next(token ? token : '');
   }
