@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CatalogRootComponent } from 'src/app/modules/catalog/components/catalog-root/catalog-root.component';
+import { Component } from '@angular/core';
+import { AllComponent } from 'src/app/modules/catalog/components/all/all.component';
 import { DefaultAnnouncementService } from 'src/app/modules/catalog/services/announcement-init';
-import { AnnouncementService } from 'src/app/modules/catalog/services/announcement.service';
 
 @Component({
   selector: 'app-my-announcements',
@@ -9,7 +8,7 @@ import { AnnouncementService } from 'src/app/modules/catalog/services/announceme
   styleUrls: ['./my-announcements.component.scss'],
   providers: [DefaultAnnouncementService]
 })
-export class MyAnnouncementsComponent extends CatalogRootComponent {
+export class MyAnnouncementsComponent extends AllComponent {
 
   override getAnnouncements(): void {
     this.announcement.getAnnouncementsOfCurrentUser()

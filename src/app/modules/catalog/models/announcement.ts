@@ -1,5 +1,6 @@
 import { AnnouncementRentType } from "./announcement-rent-type";
 import { IFamilyHouse } from "./family-house";
+import { IHouse } from "./house.interface";
 import { IOwner } from "./owner";
 
 export interface IAnnouncement {
@@ -16,6 +17,7 @@ export interface IAnnouncement {
     numberOfRooms: number,
     renovationType: string,
     status: string,
+    house?: IHouse, 
     familyHouse?: IFamilyHouse,
   },
   status: string,

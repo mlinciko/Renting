@@ -146,7 +146,7 @@ export class RegistryComponent implements OnInit {
       .subscribe(
         (res) => {
           if (res.status) {
-            this.router.navigate(["/"])
+            this.router.navigate(["/all"])
           }
         }
       )

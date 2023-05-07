@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.formData, this.rememberMe)
       .subscribe((res: IAuthResponse) => {
         if (res.status) {
-          this.router.navigate(["/"]);
+          this.router.navigate(["/all"]);
         }
       })
     } 

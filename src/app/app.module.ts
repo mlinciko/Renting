@@ -11,7 +11,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './modules/main/components/footer/footer.component';
 import { HeaderComponent } from './modules/main/components/header/header.component';
 import { MaterialModule } from './modules/material/material.module';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
@@ -19,7 +18,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AppComponent,
     MainRootComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

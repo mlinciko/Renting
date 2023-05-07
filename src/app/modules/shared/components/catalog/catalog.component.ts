@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { faDollarSign, faStar } from '@fortawesome/free-solid-svg-icons';
 import { IAnnouncement } from 'src/app/modules/catalog/models/announcement';
-import { AnnouncementTypePipe } from 'src/app/modules/catalog/pipes/announcement-type.pipe';
 
 @Component({
   selector: 'app-catalog',
@@ -18,9 +17,7 @@ export class CatalogComponent implements OnInit {
     private imageService: ImageService,
   ){}
 
-  ngOnInit(): void {
-    console.log(this.data);
-  }
+  ngOnInit(): void {}
 
   getUserImage(item: IAnnouncement): string {
     if (item.imagePathList && item.imagePathList.length) {

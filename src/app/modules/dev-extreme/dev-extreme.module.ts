@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DxAccordionModule, DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxPopoverModule, DxTabsModule, DxTextBoxModule } from 'devextreme-angular';
+import { DxAccordionModule, DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxPopoverModule, DxRangeSliderModule, DxTabsModule, DxTextBoxModule } from 'devextreme-angular';
 
 
 
@@ -17,6 +17,7 @@ import { DxAccordionModule, DxButtonModule, DxCheckBoxModule, DxDataGridModule, 
     DxPopoverModule,
     DxTabsModule,
     DxAccordionModule,
+    DxRangeSliderModule,
   ],
   exports: [
     DxDataGridModule,
@@ -29,6 +30,7 @@ import { DxAccordionModule, DxButtonModule, DxCheckBoxModule, DxDataGridModule, 
     DxPopoverModule,
     DxTabsModule,
     DxAccordionModule,
+    DxRangeSliderModule,
   ]
 })
 export class DevExtremeModule { }

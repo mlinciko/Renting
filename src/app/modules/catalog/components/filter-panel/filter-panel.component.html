@@ -1,0 +1,16 @@
+<div class="filter-panel-wrapper">
+  <div class="filter-panel-container">
+    <div class="filter-panel">
+      <dx-form #form width="700px" [(formData)]='formData' [items]="formItems">
+        <div *dxTemplate="let data of 'ratingTemplate'">
+          <div style="color: #246BFD; font-size: 12px;">
+            <fa-icon class="announcement-rating-icon" [icon]="starIcon"></fa-icon>
+            {{data}}
+          </div>
+          
+        </div>
+      </dx-form>
+    </div>
+    
+  </div>
+</div>

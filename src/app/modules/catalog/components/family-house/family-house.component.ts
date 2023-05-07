@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CatalogRootComponent } from '../catalog-root/catalog-root.component';
 import { FamilyHouseAnnouncementService } from '../../services/announcement-init';
+import { AllComponent } from '../all/all.component';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-family-house',
@@ -8,12 +9,19 @@ import { FamilyHouseAnnouncementService } from '../../services/announcement-init
   styleUrls: ['./family-house.component.scss'],
   providers: [FamilyHouseAnnouncementService]
 })
-export class FamilyHouseComponent extends CatalogRootComponent {
+export class FamilyHouseComponent extends AllComponent {
 
-  override getAnnouncements(): void {
-    this.announcement.getAnnouncementsByType()
+  override getAnnouncements(keywords?: string, callback?: any): void {
+    this.announcement.getAnnouncementsByType(keywords)
     .subscribe(
-      (res) => this.announcements = res
+      (res) => { 
+        this.announcements = res; 
+        this.filteredAnns = _.cloneDeep(this.announcements);
+        
+        if (callback) {
+          callback.call();
+        }
+      }
     )
   }
 }

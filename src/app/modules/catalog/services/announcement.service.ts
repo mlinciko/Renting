@@ -19,12 +19,14 @@ export class AnnouncementService {
     @Inject('IS_HOUSING') private isHousing: boolean,
   ) { console.log(this.typeUrl)}
 
-  getAllOpenAnnouncements(): Observable<IAnnouncement[]> {
-    return this.http.get<IAnnouncement[]>(`${this.restUrl}/open`);
+  getAllOpenAnnouncements(keywords?: string): Observable<IAnnouncement[]> {
+    return this.http.get<IAnnouncement[]>(`${this.restUrl}/open${keywords ? `/search?keywords=${keywords}` : ''}`);
   }
 
-  getAnnouncementsByType(): Observable<IAnnouncement[]> {
-    return this.http.get<IAnnouncement[]>(`${this.restUrl}/${this.isHousing ? "housing/" : ""}${this.typeUrl}/open`);
+  getAnnouncementsByType(keywords?: string): Observable<IAnnouncement[]> {
+    return this.http.get<IAnnouncement[]>(`${this.restUrl}/
+      ${this.isHousing ? "housing/" : ""}${this.typeUrl}/open
+      ${keywords ? `/search?keywords=${keywords}` : ''}`);
   }
 
   getAnnouncementsById(id: number): Observable<IAnnouncement> {

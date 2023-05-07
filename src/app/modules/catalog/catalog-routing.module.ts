@@ -4,23 +4,32 @@ import { CatalogRootComponent } from './components/catalog-root/catalog-root.com
 import { FamilyHouseComponent } from './components/family-house/family-house.component';
 import { AppartmentComponent } from './components/appartment/appartment.component';
 import { LandComponent } from './components/land/land.component';
+import { AllComponent } from './components/all/all.component';
 
 const routes: Routes = [
   {
-    path: 'all',
+    path: '',
     component: CatalogRootComponent,
-  },
-  {
-    path: 'family-house',
-    component: FamilyHouseComponent,
-  },
-  {
-    path: 'apartment',
-    component: AppartmentComponent,
-  },
-  {
-    path: 'land',
-    component: LandComponent,
+    children: [
+      {
+        path: 'all',
+        component: AllComponent,
+      },
+      {
+        path: 'family-house',
+        component: FamilyHouseComponent,
+      },
+      {
+        path: 'apartment',
+        component: AppartmentComponent,
+      },
+      {
+        path: 'land',
+        component: LandComponent,
+      },
+      { path: "", pathMatch: "full", redirectTo: "all"},
+      { path: "**", redirectTo: "all" },
+    ]
   },
   { path: "", pathMatch: "full", redirectTo: "all"},
   { path: "**", redirectTo: "all" },

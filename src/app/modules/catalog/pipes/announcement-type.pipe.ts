@@ -1,11 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { AnnouncementRentType } from '../models/announcement-rent-type';
-
-const rentTypes = {
-  DAILY_RENT: "nigth",
-  MONTHLY_RENT: "month",
-  SELL: "sell",
-}
+import { rentTypes } from '../models/rent-types';
 
 @Pipe({
   name: 'announcementType'
@@ -13,7 +8,7 @@ const rentTypes = {
 export class AnnouncementTypePipe implements PipeTransform {
 
   transform(value: AnnouncementRentType): string {
-    return rentTypes[value];
+    return rentTypes[value].code;
   }
 
 }

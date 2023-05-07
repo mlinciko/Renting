@@ -16,6 +16,10 @@
   border-radius: 20px;
   background-color: #246BFD;
 }
+.dx-button-mode-contained.dx-button-normal {
+  border-radius: 20px;
+}
+
 .dx-button-mode-contained.dx-button-default.dx-state-active,
 .dx-button-mode-contained.dx-button-default.dx-state-hover,
 .dx-button-mode-contained.dx-button-default.dx-state-focused {
@@ -235,4 +239,8 @@
 
 .dx-accordion-item {
   border: none;
+}
+
+.dx-dropdowneditor-icon {
+  border-radius: 12px;
 }
