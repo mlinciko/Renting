@@ -31,5 +31,10 @@ export interface IGuardPathes {
   regExp: RegExp | string;
   roles: string[];
   message: string;
-  additionalRule?: "tokenDosentExsists" | "tokenDosentExpired",
+  additionalRule?: "tokenDosentExists" | "tokenDosentExpired",
+}
+
+export interface IDefaultResponse {
+  status: boolean,
+  message: string,
 }

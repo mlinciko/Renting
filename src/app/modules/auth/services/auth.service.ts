@@ -66,7 +66,8 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem("access_token");
-    this.router.navigate(['/sign'])
+    this.accessToken.next("");
+    this.router.navigate(['/'])
   }
 
   isTokenExpired(): boolean {

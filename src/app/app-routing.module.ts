@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MainRootComponent } from './modules/main/components/main-root/main-root.component';
+import { AppGuard } from './app.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +17,14 @@ const routes: Routes = [
     path: "",
     component: MainRootComponent,
     children: [
+      {
+        path: "account",
+        canActivate: [AppGuard],
+        loadChildren: () =>
+          import("./modules/account/account.module").then(
+            (m) => m.AccountModule
+          ),
+      },
       {
         path: "",
         loadChildren: () =>

@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IAnnouncement } from '../../models/announcement';
 import { ImageService } from 'src/app/services/image.service';
 import { faDollarSign, faStar } from '@fortawesome/free-solid-svg-icons';
+import { IAnnouncement } from 'src/app/modules/catalog/models/announcement';
+import { AnnouncementTypePipe } from 'src/app/modules/catalog/pipes/announcement-type.pipe';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
   @Input() data!: IAnnouncement[];

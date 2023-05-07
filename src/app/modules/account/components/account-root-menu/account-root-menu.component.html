@@ -1,0 +1,61 @@
+<div class="menu-container">
+  <div *ngIf="user" class="menu__user-data user-data">
+    <div class="user-data__profile">
+      <div *ngIf="user.rating" class="user-data__rating">
+        <fa-icon class="user-data__rating-icon" [icon]="starIcon"></fa-icon>
+          {{user.rating | number: '1.1-1'}}
+        </div>
+        <div class="user-data__face">
+          <ng-container *ngIf="user.imagePath; else noImage">
+            <img class="user-data__image" [src]="getUserImage(user.imagePath)" alt="image">
+          </ng-container>
+          <ng-template #noImage>
+            <fa-icon class="user-data__icon" [icon]="noImageIcon"></fa-icon>
+          </ng-template>
+          <fa-icon class="user-data__edit-icon" [icon]="editIcon" (click)="loadAvatar()"></fa-icon>
+        </div>
+        <div class="user-data__name">
+          {{user.firstName}} {{user.lastName}}
+        </div>
+    </div>
+  </div>
+  <div class="menu__blocks">
+    <div *ngFor="let item of menuItems" class="menu__block">
+      <div
+        *ngIf="!item.template"
+        class="menu__item" 
+        [routerLink]="[item.path]"
+        routerLinkActive="menu__item-active"
+        (click)="selectMenuItem(item)">
+        <span>
+          <fa-icon class="menu__item-icon" [icon]="item.icon"></fa-icon>
+          {{item.title}}
+        </span>
+        
+        <fa-icon class="menu__item-arrow" [icon]="arrowIcon"></fa-icon>
+      </div>
+      <div 
+        *ngIf="item.template === 'logout'" 
+        class="menu__item menu__item-logout"
+        (click)="logoutUser()">
+        <span>
+          <fa-icon class="menu__item-icon" [icon]="item.icon"></fa-icon>
+          {{item.title}}
+        </span>
+      </div>
+      <div 
+        *ngIf="item.template === 'select'" 
+        class="menu__item"
+        (click)="enableDarkMode()">
+        <span>
+          <fa-icon class="menu__item-icon" [icon]="item.icon"></fa-icon>
+          {{item.title}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<dx-popup *ngIf="avatarDialog" title="Upload avatar" [(visible)]="avatarDialog" width="500px" height="200px">
+  <app-upload-avatar-dialog (onCloseEvent)="closeLoadAvatar()"></app-upload-avatar-dialog>
+</dx-popup>
+

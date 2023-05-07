@@ -1,3 +1,11 @@
+.dx-texteditor.dx-editor-outlined {
+  border-radius: 12px;
+}
+
+.dx-widget input, .dx-widget textarea {
+  font-family: 'Poppins', sans-serif;
+}
+
 .dx-gallery-indicator-item-active, .dx-gallery-indicator-item-selected {
   background: #264ABD; 
 }
@@ -22,28 +30,36 @@
   color: #999;
 }
 
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-before {
-  border-color:#FAFAFA;
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-empty .dx-texteditor-label .dx-label-before {
+  //border-color:#FAFAFA;
+  border-color: transparent;
   border-bottom-left-radius: 12px;
   border-top-left-radius: 12px;
 }
 
-.dx-editor-outlined.dx-texteditor-with-floating-label .dx-texteditor-label .dx-label-before {
+.dx-editor-outlined.dx-texteditor-with-floating-label .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined .dx-texteditor-label .dx-label-before {
   border-bottom-left-radius: 12px;
   border-top-left-radius: 12px;
 }
 
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label {
-  border-color:#FAFAFA;
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-empty .dx-texteditor-label .dx-label {
+  //border-color:#FAFAFA;
+  border-color: transparent;
 }
 
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after {
-  border-color:#FAFAFA;
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-texteditor-empty .dx-texteditor-label .dx-label-after {
+  //border-color:#FAFAFA;
+  border-color: transparent;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
-.dx-editor-outlined.dx-texteditor-with-floating-label .dx-texteditor-label .dx-label-after {
+.dx-editor-outlined.dx-texteditor-with-floating-label .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined .dx-texteditor-label .dx-label-after {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -58,17 +74,20 @@
 }
 
 .dx-editor-outlined.dx-state-focused.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after,
-.dx-editor-outlined.dx-state-hover.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after {
+.dx-editor-outlined.dx-state-hover.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-state-hover.dx-texteditor-empty .dx-texteditor-label .dx-label-after {
   border-color:#264ABD;
 }
 
 .dx-editor-outlined.dx-state-focused.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label
-.dx-editor-outlined.dx-state-hover.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label {
+.dx-editor-outlined.dx-state-hover.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-state-hover.dx-texteditor-empty .dx-texteditor-label .dx-label  {
   border-color:#264ABD;
 }
 
 .dx-editor-outlined.dx-state-focused.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after,
-.dx-editor-outlined.dx-state-hover.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after {
+.dx-editor-outlined.dx-state-hover.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label-after, 
+.dx-editor-outlined.dx-state-hover.dx-texteditor-empty .dx-texteditor-label .dx-label-after {
   border-color:#264ABD;
 }
 
@@ -76,14 +95,19 @@
   color:#264ABD;
 }
 .dx-texteditor.dx-state-hover .dx-texteditor-label,
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label span{
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label span{
   color:#264ABD;
 }
 
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-hover .dx-texteditor-label .dx-label,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label,
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty.dx-state-hover .dx-texteditor-label .dx-label {
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty.dx-state-hover .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-state-focused .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-state-hover .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-texteditor-empty.dx-state-hover .dx-texteditor-label .dx-label {
   border-bottom-color:#264ABD;
   border-top-color:#264ABD;
 }
@@ -92,16 +116,24 @@
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-hover .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label-before,
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty.dx-state-hover .dx-texteditor-label .dx-label-before,
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-hover .dx-texteditor-label .dx-label-after {
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-hover .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-state-focused .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-state-hover .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-state-focused.dx-state-hover .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-texteditor-empty.dx-state-hover .dx-texteditor-label .dx-label-before,
+.dx-editor-outlined.dx-state-hover .dx-texteditor-label .dx-label-after{
   border-color:#264ABD;
 }
 
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-after {
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-after,
+.dx-editor-outlined.dx-state-focused.dx-invalid .dx-texteditor-label .dx-label-after {
   border-color: #d9534f;
 }
 
 .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
-.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span {
+.dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span,
+.dx-editor-outlined.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label,
+.dx-editor-outlined.dx-state-focused.dx-state-hover.dx-invalid .dx-texteditor-label .dx-label span {
   color:#d9534f;
 }
 
@@ -131,4 +163,76 @@
 
 .dx-toast-error {
   background-color: rgba(217, 83, 79, 0.8);
+}
+
+.dx-item.dx-tab {
+  width: 200px;
+}
+
+.dx-tabs {
+  border: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.dx-tab-selected::after {
+  border-right: unset;
+  border-left: unset;
+  border-top: unset;
+}
+
+.dx-tab {
+  color: #9E9E9E
+}
+
+.dx-tab.dx-tab-selected {
+  color:#246BFD;
+}
+
+.dx-tab::after, .dx-tab::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  right: -1px;
+  left: -1px;
+  border-right: unset;
+  border-left: unset;
+  border-top: unset;
+  border-bottom: 3px solid #EFEFEF;
+}
+
+.dx-tab.dx-state-focused::after, .dx-tab.dx-tab-selected::after {
+  border-right: unset;
+  border-left: unset;
+  border-top: unset;
+  border-bottom: 3px solid #246BFD;
+}
+
+.dx-tab {
+  background-color: transparent;
+}
+
+.dx-accordion-wrapper {
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  padding:0px 10px;
+}
+
+.dx-state-focused.dx-accordion-item {
+  border: none;
+}
+
+.dx-accordion-item-title {
+  font-size: 14px;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.dx-accordion-item-body {
+  font-weight: 300;
+}
+
+.dx-accordion-item {
+  border: none;
 }

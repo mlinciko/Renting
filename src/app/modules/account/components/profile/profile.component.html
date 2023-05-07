@@ -1,0 +1,29 @@
+<div class="profile-container">
+  <div *ngIf="user" class="menu__user-data user-data">
+    <div class="user-data__profile">
+        <div class="user-data__face">
+          <ng-container *ngIf="user.imagePath; else noImage">
+            <img class="user-data__image" [src]="getUserImage(user.imagePath)" alt="image">
+          </ng-container>
+          <ng-template #noImage>
+            <fa-icon class="user-data__icon" [icon]="noImageIcon"></fa-icon>
+          </ng-template>
+          <fa-icon class="user-data__edit-icon" [icon]="editIcon" (click)="loadAvatar()"></fa-icon>
+        </div>
+    </div>
+  </div>
+  <dx-form #form width="300px" [(formData)]='formData' [items]="formItems">
+  </dx-form>
+  <dx-button
+    class="profile-button"
+    stylingMode="contained"
+    text="Update"
+    type="default"
+    width="300px"
+    (onClick)="submitForm()"
+    >
+  </dx-button>
+</div>
+<dx-popup *ngIf="avatarDialog" title="Upload avatar" [(visible)]="avatarDialog" width="500px" height="200px">
+  <app-upload-avatar-dialog (onCloseEvent)="closeLoadAvatar()"></app-upload-avatar-dialog>
+</dx-popup>

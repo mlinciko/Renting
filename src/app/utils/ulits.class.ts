@@ -23,4 +23,8 @@ export class Utils {
       message: "Invalid password range",
     };
   }
+
+  public static getFileType(filename: string): string | null {
+    return /[.]/.exec(filename) ? /[^.]+$/.exec(filename)![0].toLowerCase() : null;
+  }
 }

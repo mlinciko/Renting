@@ -1,0 +1,10 @@
+<div class="contact-wrapper">
+  <div class="contact" *ngFor="let contact of contacts">
+    <div class="contact__icon">
+      <img [src]="contact.icon" alt="icon">
+    </div>
+    <div class="contact__title">
+      {{contact.title}}
+    </div>
+  </div>
+</div>

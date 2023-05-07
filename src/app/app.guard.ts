@@ -3,9 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import notify from 'devextreme/ui/notify';
 import { Observable } from 'rxjs';
 import { IGuardPathes } from './models/models';
-import { AuthService } from './modules/auth/services/auth.service';
 import { guardPathes } from './pathes';
 import { UserService } from './services/user.service';
+import { AuthService } from './modules/auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,6 @@ export class AppGuard implements CanActivate {
       guardPathes,
       state.url
     );
-    console.log(canActivate, message)
 
     if (!canActivate) {
       notify({ message: message, type: "error", width: "auto"});
@@ -41,16 +40,14 @@ export class AppGuard implements CanActivate {
   ): { canActivate: boolean; message: string } {
     for (const path of pathes) {
       const { regExp, roles, message, additionalRule } = path;
-      console.log(RegExp(regExp).test(url), url)
       if (RegExp(regExp).test(url)) {
-        if (additionalRule === "tokenDosentExsists" && this.auth.isTokenExists()) {
-          console.log(additionalRule, this.auth.isTokenExists())
+        if (additionalRule === "tokenDosentExists" && this.auth.isTokenExists()) {
           return {
             canActivate: false,
             message,
           };
         }
-        if (additionalRule === "tokenDosentExpired" && !this.auth.isTokenExpired()) {
+        if (additionalRule === "tokenDosentExpired" && this.auth.isTokenExpired()) {
           return {
             canActivate: false,
             message: "Please re-authorize",

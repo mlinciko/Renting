@@ -5,9 +5,8 @@ import { CatalogRootComponent } from './components/catalog-root/catalog-root.com
 import { FamilyHouseComponent } from './components/family-house/family-house.component';
 import { LandComponent } from './components/land/land.component';
 import { AppartmentComponent } from './components/appartment/appartment.component';
-import { CatalogComponent } from './components/catalog/catalog.component';
-import { AnnouncementTypePipe } from './pipes/announcement-type.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -16,14 +15,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CatalogRootComponent,
     FamilyHouseComponent,
     LandComponent,
-    AppartmentComponent,
-    CatalogComponent,
-    AnnouncementTypePipe
+    AppartmentComponent
   ],
   imports: [
     CommonModule,
     CatalogRoutingModule,
     FontAwesomeModule,
+    SharedModule,
   ]
 })
 export class CatalogModule { }

@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import notify from 'devextreme/ui/notify';
 import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../models/models';
+import { IDefaultResponse, IUser } from '../models/models';
 import { AuthService } from '../modules/auth/services/auth.service';
+import { IUserEdit } from '../modules/account/models/user-edit.interface';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +52,62 @@ export class UserService {
     .subscribe();
   }
 
+  updateCurrentUser(payload: IUserEdit): Observable<IDefaultResponse> {
+    return this.http.patch<IDefaultResponse>(`${this.restUrl}/current`, payload)
+    .pipe(
+      catchError((err) => 
+      this.onCatchError(
+        err, err.error.message 
+        ? err.error.message
+        : "Error occured while updating user data"
+      )),
+      map(
+        (res) => {
+          this.getCurrentUser();
+          return res;
+        }
+      )
+    )
+  }
+
+  updateCurrentUserImage(file: File): void {
+    this.deleteCurrentUserImage().subscribe(
+      () => this.uploadCurrentUserAvatar(file).subscribe()
+    )
+  }
+  
+  deleteCurrentUserImage(): Observable<any> {
+    return this.http.delete(`${this.restUrl}/current/image`)
+    .pipe(
+      catchError((err) => 
+        this.onCatchError(
+          err, err.error.message 
+          ? err.error.message
+          : "Error occured while deleting image"
+        ))
+    ) 
+  }
+
+  uploadCurrentUserAvatar(file: File): Observable<any> {
+    const payload = new FormData();
+    payload.append("file", file);
+    return this.http.post(`${this.restUrl}/current/image`, payload)
+    .pipe(
+      catchError((err) => 
+        this.onCatchError(
+          err, err.error.message 
+          ? err.error.message
+          : "Error occured while uploading image"
+      )),
+      map(
+        (res) => {
+          this.getCurrentUser();
+          return res;
+        }
+      )
+    )
+  }
+
   getUserById(userId: number): Observable<IUser> {
     return this.http.get<IUser>(`${this.restUrl}/${userId}`)
     .pipe(
@@ -63,6 +121,10 @@ export class UserService {
 
   setUser(user: IUser | null) {
     this.user.next(user)
+  }
+
+  unsetUser(): void {
+    this.user.next(null);
   }
 
   checkRoles(roles: string[]): boolean {

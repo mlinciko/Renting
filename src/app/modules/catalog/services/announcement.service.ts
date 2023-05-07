@@ -31,4 +31,8 @@ export class AnnouncementService {
     return this.http.get<IAnnouncement>(`${this.restUrl}/${this.isHousing ? "housing/" : ""}${this.typeUrl}/${id}`);
   }
 
+  getAnnouncementsOfCurrentUser(): Observable<IAnnouncement[]> {
+    return this.http.get<IAnnouncement[]>(`${this.restUrl}/owners/current`);
+  }
+
 }
