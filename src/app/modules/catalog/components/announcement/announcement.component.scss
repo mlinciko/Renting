@@ -5,6 +5,12 @@
 
   .announcement {
 
+    .dashboard {
+      margin-bottom:10px;
+      border-bottom: 1px solid #EFEFEF;
+      padding-bottom: 20px;
+    }
+
     &__title {
       font-size: 30px;
       font-weight: 600;
@@ -97,6 +103,7 @@
         width: 40px;
         height: 40px;
         border-radius:50%;
+        object-fit: cover;
       }
 
       fa-icon {

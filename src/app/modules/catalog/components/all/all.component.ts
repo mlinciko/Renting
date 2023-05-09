@@ -5,6 +5,7 @@ import { DefaultAnnouncementService } from '../../services/announcement-init';
 import { FilterService } from '../../services/filter.service';
 import { IFilters } from '../../models/filters.interface';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all',
@@ -18,6 +19,7 @@ export class AllComponent implements OnInit {
   constructor(
     protected announcement: AnnouncementService,
     protected filters: FilterService,
+    protected router: Router,
   ) { }
 
   ngOnInit(): void {

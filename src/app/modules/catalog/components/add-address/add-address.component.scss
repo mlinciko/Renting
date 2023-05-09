@@ -1,0 +1,13 @@
+:host {
+  ::ng-deep {
+    .dx-item-content.dx-box-item-content.dx-box-flex.dx-box.dx-widget.dx-collection {
+      justify-content: center!important;
+      align-items: center!important;
+
+      .dx-box-item:nth-child(2) {
+        flex: unset!important;
+        padding-top: 10px!important;
+      }
+    }
+  }
+}

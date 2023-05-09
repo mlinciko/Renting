@@ -1,0 +1,1 @@
+export type propertyType = "APARTMENT" | "FAMILY_HOUSE" | "LAND";

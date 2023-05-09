@@ -6,15 +6,18 @@ import { AnnouncementService } from '../../services/announcement.service';
 import { ImageService } from 'src/app/services/image.service';
 import { faLocationArrow, faStar, faUserCircle, faVectorSquare } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs';
+import { CommonService } from 'src/app/services/common.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-announcement',
   templateUrl: './announcement.component.html',
   styleUrls: ['./announcement.component.scss'],
-  providers: [DefaultAnnouncementService]
+  providers: [CommonService, DefaultAnnouncementService]
 })
 export class AnnouncementComponent implements OnInit {
   announcementId: number | null;
+  status: string | null;
   announcement!: IAnnouncement;
   
   starIcon = faStar;
@@ -23,32 +26,48 @@ export class AnnouncementComponent implements OnInit {
   noImageIcon = faUserCircle;
 
   loading: boolean = false;
+  currentUserId!: number;
 
   constructor(
     private route: ActivatedRoute,
     private annService: AnnouncementService,
     private imageService: ImageService,
+    private user: UserService,
   ) {
     const id = this.route.snapshot.paramMap?.get("id")
+    const status = this.route.snapshot.paramMap?.get("status")
     this.announcementId = id ? +id : null;
+    this.status = status ? status : null;
    }
 
   ngOnInit(): void {
+    this.currentUserId = this.user.user.value.id;
     this.loadAnnouncement();
   }
 
   loadAnnouncement(): void {
-    if (!this.announcementId) {
+    if (!this.announcementId || !this.status) {
       return;
     }
     this.loading = true;
-    this.annService.getAnnouncementById(this.announcementId)
-    .pipe(finalize(() => this.loading = false))
-    .subscribe(
-      (res) => {
-        this.announcement = res;
-      }
-    )
+    if (this.status === "open") {
+      this.annService.getAnnouncementById(this.announcementId)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(
+        (res) => {
+          this.announcement = res;
+        }
+      )
+    } else {
+      this.annService.getHiddenAnnouncementById(this.announcementId)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(
+        (res) => {
+          this.announcement = res;
+        }
+      )
+    }
+    
   }
 
   getAnnImage(index: number): string {
@@ -64,6 +83,10 @@ export class AnnouncementComponent implements OnInit {
 
   writeToOwner(): void {
 
+  }
+
+  reload(): void {
+    this.loadAnnouncement();
   }
 
 }

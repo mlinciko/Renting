@@ -1,3 +1,12 @@
 <ng-container *ngIf="announcements">
-  <app-catalog [data]="announcements"></app-catalog>
+  <dx-button
+    class="add-button"
+    stylingMode="contained"
+    text="+ Create an announcement"
+    type="default"
+    width="220px"
+    (onClick)="createAnnouncement()"
+    >
+  </dx-button>
+  <app-catalog [data]="announcements" [isUserAnns]="true"></app-catalog>
 </ng-container>

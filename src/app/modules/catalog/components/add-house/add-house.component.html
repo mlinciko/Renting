@@ -1,0 +1,6 @@
+<dx-form #formHouse width="400px" [(formData)]='houseFormData' [items]="houseFormItems" [disabled]="isFormDisaled">
+</dx-form>
+
+<dx-popup *ngIf="houseMaterialModal" title="Add Material" [(visible)]="houseMaterialModal" width="500px" height="200px">
+  <app-add-house-material-modal (onCancel)="closeMaterialModal()"></app-add-house-material-modal>
+</dx-popup>

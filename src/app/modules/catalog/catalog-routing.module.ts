@@ -6,6 +6,7 @@ import { AppartmentComponent } from './components/appartment/appartment.componen
 import { LandComponent } from './components/land/land.component';
 import { AllComponent } from './components/all/all.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { AddAnnouncementComponent } from './components/add-announcement/add-announcement.component';
 
 const routes: Routes = [
   {
@@ -13,16 +14,21 @@ const routes: Routes = [
     children: [
       {
         path: "view/:id",
-        component: AnnouncementComponent,
+        children: [
+          {
+            path: ":status",
+            component: AnnouncementComponent,
+          }
+        ]
       },
       // {
       //   path: "edit/:id",
       //   component: EditAnnouncementComponent,
       // },
-      // {
-      //   path: "add",
-      //   component: AddAnnouncementComponent,
-      // },
+      {
+        path: "add",
+        component: AddAnnouncementComponent,
+      },
     ]
   },
   {

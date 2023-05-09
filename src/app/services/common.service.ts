@@ -46,6 +46,10 @@ export class CommonService {
     });
   }
 
+  getEnum(endpoint: string): Observable<any> {
+    return this.http.get(`${this.restUrl}enums/${endpoint}`);
+  }
+
   onCatchError(err: HttpErrorResponse, message: string): Observable<never> {
     if (err.status !== 403 && err.status !== 401) {
       notify({ message, type: "error", width: "auto"});

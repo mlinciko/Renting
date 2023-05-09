@@ -6,6 +6,9 @@
       [visible]="loading"
     ></dx-load-indicator>
   <div class="announcement" *ngIf="announcement">
+    <div class="dashboard" *ngIf="announcement.property.owner.id === currentUserId">
+      <app-dashboard [announcement]="announcement" (onReloadEvent)="reload()"></app-dashboard>
+    </div>
     <div class="announcement__title">
       {{announcement.description}}
     </div>

@@ -17,4 +17,8 @@ export class MyAnnouncementsComponent extends AllComponent {
     )
   }
 
+  createAnnouncement(): void {
+    this.router.navigate(["/announcement/add"])
+   }
+
 }

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CatalogComponent implements OnInit {
   @Input() data!: IAnnouncement[];
+  @Input() isUserAnns: boolean = false;
   currencyIcon = faDollarSign;
   starIcon = faStar;
   locationIcon = faLocationArrow;
@@ -30,6 +31,6 @@ export class CatalogComponent implements OnInit {
   }
 
   goToAnnouncement(item: IAnnouncement): void {
-    this.router.navigate([`/announcement/view/${item.id}`])
+    this.router.navigate([`/announcement/view/${item.id}/${item.status.toLowerCase()}`])
   }
 }

@@ -1,0 +1,14 @@
+<dx-form #formAddress width="400px" [(formData)]='addressFormData' [items]="addressFormItems" [disabled]="isFormDisaled">
+</dx-form>
+
+<dx-popup *ngIf="regionModal" title="Add Region" [(visible)]="regionModal" width="500px" height="200px">
+  <app-add-region-modal (onCancel)="closeRegionModal()"></app-add-region-modal>
+</dx-popup>
+
+<dx-popup *ngIf="cityModal" title="Add City" [(visible)]="cityModal" width="500px" height="250px">
+  <app-add-city-modal (onCancel)="closeCityModal()"></app-add-city-modal>
+</dx-popup>
+
+<dx-popup *ngIf="streetModal" title="Add Street" [(visible)]="streetModal" width="500px" height="250px">
+  <app-add-street-modal (onCancel)="closeStreetModal()"></app-add-street-modal>
+</dx-popup>

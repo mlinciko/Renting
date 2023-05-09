@@ -1,0 +1,13 @@
+<div class="modal-body">
+  <dx-form #form width="100%" [(formData)]='formData' [items]="formItems">
+  </dx-form>
+</div>
+
+<dx-toolbar [width]="'100%'">
+  <dxi-item location="center" widget="dxButton"
+      [options]="{text: 'Add', stylingMode: 'outlined', type: 'default', onClick: add}">
+  </dxi-item>
+  <dxi-item location="center" widget="dxButton"
+      [options]="{text: 'Cancel', stylingMode: 'outlined', type: 'normal', onClick: cancel}">
+  </dxi-item>
+</dx-toolbar>

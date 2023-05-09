@@ -7,11 +7,17 @@
             {{item.property.owner.rating | number: '1.1-1'}}
           </div>
           <img [src]="getAnnImage(item)" alt="Image">
+          <div *ngIf="isUserAnns" class="announcement-status">{{item.status}}</div>
         </div>
         <div class="announcement-title">{{item.description}}</div>
         <div class="announcement-city">
           <fa-icon [icon]="locationIcon"></fa-icon>
-          {{item.property.house?.address?.city?.name}}, {{item.property.house?.address?.region?.name}}
+          <ng-container *ngIf="item.property.house?.address">
+            {{item.property.house?.address?.city?.name}}, {{item.property.house?.address?.region?.name}}
+          </ng-container>
+          <ng-container *ngIf="item.property.address">
+            {{item.property.address?.city?.name}}, {{item.property.address?.region?.name}}
+          </ng-container>
         </div>
         <div class="announcement-price">
           <span class="announcement-price-currency">

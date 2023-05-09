@@ -1,0 +1,33 @@
+<div class="announcement-wrapper">
+  <div class="announcement-property-type">
+    <dx-select-box
+      [(value)]="propertyType"
+      [dataSource]="propertyTypeSource"
+      width="300"
+      (onSelectionChanged)="propertyTypeChanged($event)"
+    ></dx-select-box>
+  </div>
+  <div class="announcement-start" *ngIf="!propertyType">
+    Choose a property type to start!
+  </div>
+
+  <div class="announcement" *ngIf="propertyType">
+    <div class="first-block">
+      <div class="announcement-address">
+        <app-add-address #address [type]="propertyType"></app-add-address>
+      </div>
+      <div class="announcement-house" *ngIf="propertyType === 'FAMILY_HOUSE' || propertyType === 'APARTMENT'">
+        <app-add-house #house [type]="propertyType"></app-add-house>
+      </div>
+      <div class="announcement-property">
+        <app-add-property #property [type]="propertyType"></app-add-property>
+      </div>
+      <div class="announcement-main">
+        <dx-form #form width="400px" [(formData)]='formData' [items]="formItems" [disabled]="isFormDisaled">
+        </dx-form>
+      </div>
+      <div class="announcement-images">
+        <app-upload-images-to-ann></app-upload-images-to-ann>
+      </div>
+    </div>
+</div>
