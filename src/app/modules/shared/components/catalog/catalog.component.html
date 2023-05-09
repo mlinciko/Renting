@@ -1,14 +1,18 @@
 <ng-container *ngIf="data.length > 0; else notFound">
   <div class="announcements-container">
-      <div *ngFor="let item of data" class="announcement">
+      <div *ngFor="let item of data" class="announcement" (click)="goToAnnouncement(item)">
         <div class="announcement-image">
           <div *ngIf="item.property?.owner?.rating" class="announcement-rating">
             <fa-icon class="announcement-rating-icon" [icon]="starIcon"></fa-icon>
             {{item.property.owner.rating | number: '1.1-1'}}
           </div>
-          <img [src]="getUserImage(item)" alt="Image">
+          <img [src]="getAnnImage(item)" alt="Image">
         </div>
         <div class="announcement-title">{{item.description}}</div>
+        <div class="announcement-city">
+          <fa-icon [icon]="locationIcon"></fa-icon>
+          {{item.property.house?.address?.city?.name}}, {{item.property.house?.address?.region?.name}}
+        </div>
         <div class="announcement-price">
           <span class="announcement-price-currency">
             <fa-icon [icon]="currencyIcon"></fa-icon>

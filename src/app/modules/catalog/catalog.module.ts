@@ -11,6 +11,7 @@ import { FilterPanelComponent } from './components/filter-panel/filter-panel.com
 import { FilterService } from './services/filter.service';
 import { AllComponent } from './components/all/all.component';
 import { DevExtremeModule } from '../dev-extreme/dev-extreme.module';
+import { AnnouncementComponent } from './components/announcement/announcement.component';
 
 
 
@@ -22,6 +23,7 @@ import { DevExtremeModule } from '../dev-extreme/dev-extreme.module';
     AppartmentComponent,
     FilterPanelComponent,
     AllComponent,
+    AnnouncementComponent,
   ],
   imports: [
     CommonModule,

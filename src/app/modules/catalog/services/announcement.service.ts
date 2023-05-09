@@ -24,13 +24,11 @@ export class AnnouncementService {
   }
 
   getAnnouncementsByType(keywords?: string): Observable<IAnnouncement[]> {
-    return this.http.get<IAnnouncement[]>(`${this.restUrl}/
-      ${this.isHousing ? "housing/" : ""}${this.typeUrl}/open
-      ${keywords ? `/search?keywords=${keywords}` : ''}`);
+    return this.http.get<IAnnouncement[]>(`${this.restUrl}/${this.isHousing ? "housing/" : ""}${this.typeUrl}/open${keywords ? `/search?keywords=${keywords}` : ''}`);
   }
 
-  getAnnouncementsById(id: number): Observable<IAnnouncement> {
-    return this.http.get<IAnnouncement>(`${this.restUrl}/${this.isHousing ? "housing/" : ""}${this.typeUrl}/${id}`);
+  getAnnouncementById(id: number): Observable<IAnnouncement> {
+    return this.http.get<IAnnouncement>(`${this.restUrl}/open/${id}`);
   }
 
   getAnnouncementsOfCurrentUser(): Observable<IAnnouncement[]> {

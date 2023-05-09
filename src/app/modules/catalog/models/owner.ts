@@ -6,4 +6,5 @@ export interface IOwner {
   patronymic: string,
   phoneNumber: string,
   rating: number,
+  imagePath: string,
 }

@@ -11,6 +11,7 @@
     box-shadow: rgba(0,0,0,0.7);
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     padding: 10px 0;
+    cursor:pointer;
   
     .announcement-image {
       position: relative;
@@ -44,7 +45,7 @@
     }
   
     .announcement-price {
-      padding: 0px 10px 30px 20px;
+      padding: 10px 10px 10px 20px;
       color: #5E6061;
       font-weight: 100;
   
@@ -54,6 +55,17 @@
         font-size: 20px;
       }
     }
+    
+    .announcement-city {
+      padding: 0 20px 0 20px;
+      color: #5E6061;
+      font-size: 12px;
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+
+  .announcement:hover {
+    transform: scale(1.1);
   }
 }
 

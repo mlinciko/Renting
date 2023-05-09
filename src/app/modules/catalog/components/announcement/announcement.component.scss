@@ -1,0 +1,146 @@
+.announcement-wrapper {
+  width: 70%;
+  margin: 100px auto;
+  font-family: 'Poppins', sans-serif;
+
+  .announcement {
+
+    &__title {
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    &__short-desc {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    &__short-desc.second{
+      border-bottom: 1px solid #EFEFEF;
+      padding-bottom: 10px;
+    }
+
+    &__rating {
+      top: 16px;
+      right: 30px;
+      padding: 5px 8px;
+      background-color: rgba(255,255,255,0.7);
+      border-radius: 8px;
+      color:#000;
+      font-weight: 500;
+
+      .announcement-rating-icon {
+        color:#FBA01D;
+      }
+    }
+
+    &__type {
+      background-color: #E1E7F2;
+      color: #246bfd;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    &__city {
+      color: #5E6061;
+    }
+
+    &__gallery {
+      width: 100%;
+      height: 400px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 200px 200px;
+      gap: 10px;
+    }
+
+    &__image {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__image.big{
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    &__property-item {
+      text-align: center;
+    }
+
+    &__property-title {
+      font-weight: 500;
+    }
+
+    &__property-subtitle {
+      color: #5E6061;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    &__owner {
+      display: flex;
+      gap: 20px;
+    }
+
+    &__owner-image {
+      width: 40px;
+      height: 40px;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius:50%;
+      }
+
+      fa-icon {
+        font-size: 40px;
+      }
+    }
+
+    &__owner-name {
+      padding-bottom: 10px;
+    }
+
+    &__owner-title {
+      font-size: 12px;
+      color: #5E6061;
+    }
+
+    &__owner-write {
+      margin-left: auto;
+    }
+
+    &__full-desrc {
+      margin-top: 30px;
+    }
+
+    &__full-desrc-title {
+      font-size: 16px;
+      font-weight: 500;
+      padding-bottom: 10px;
+    }
+
+    &__full-desrc-item {
+      display: flex;
+      color: #5E6061;
+      padding-bottom:10px;
+    }
+
+    &__full-desrc-elem {
+      width:200px;
+    }
+     
+  }
+
+  .loading-indicator {
+    display: flex;
+    margin: 0 auto;
+  }
+}

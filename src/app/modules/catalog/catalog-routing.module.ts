@@ -5,8 +5,26 @@ import { FamilyHouseComponent } from './components/family-house/family-house.com
 import { AppartmentComponent } from './components/appartment/appartment.component';
 import { LandComponent } from './components/land/land.component';
 import { AllComponent } from './components/all/all.component';
+import { AnnouncementComponent } from './components/announcement/announcement.component';
 
 const routes: Routes = [
+  {
+    path: "announcement",
+    children: [
+      {
+        path: "view/:id",
+        component: AnnouncementComponent,
+      },
+      // {
+      //   path: "edit/:id",
+      //   component: EditAnnouncementComponent,
+      // },
+      // {
+      //   path: "add",
+      //   component: AddAnnouncementComponent,
+      // },
+    ]
+  },
   {
     path: '',
     component: CatalogRootComponent,

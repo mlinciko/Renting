@@ -1,0 +1,89 @@
+<div class="announcement-wrapper">
+  <dx-load-indicator
+      class="loading-indicator"
+      height="40"
+      width="40"
+      [visible]="loading"
+    ></dx-load-indicator>
+  <div class="announcement" *ngIf="announcement">
+    <div class="announcement__title">
+      {{announcement.description}}
+    </div>
+    <div class="announcement__short-desc">
+      <div class="announcement__type">
+        {{announcement.propertyType | titlecase}}
+      </div>
+      <div class="announcement__rating">
+        <fa-icon class="announcement-rating-icon" [icon]="starIcon"></fa-icon>
+        {{announcement.property.owner.rating | number: '1.1-1'}}
+      </div>
+      <div class="announcement__city">
+        <fa-icon [icon]="locationIcon"></fa-icon>
+        {{announcement.property.house?.oneLineAddress ? announcement.property.house?.oneLineAddress : announcement.property.oneLineAddress}}
+      </div>
+    </div>
+    <div class="announcement__gallery">
+      <ng-container *ngFor="let index of [0,1,2,3,4]">
+        <div class="announcement__image" [ngClass]="{'big': index === 0}">
+          <img [src]="getAnnImage(index)" alt="">
+        </div>
+      </ng-container>
+    </div>
+    <div class="announcement__short-desc second">
+      <div class="announcement__property-item">
+        <div class="announcement__property-title">{{announcement.property.area}} m<sup>2</sup></div>
+        <div class="announcement__property-subtitle">area</div>
+      </div>
+      <div class="announcement__property-item" *ngIf="announcement.propertyType === 'APARTMENT'">
+        <div class="announcement__property-title">{{announcement.property.floor}} of {{announcement.property.house.numberOfFloors}}</div>
+        <div class="announcement__property-subtitle">floor</div>
+      </div>
+      <div class="announcement__property-item" *ngIf="announcement.propertyType === 'APARTMENT' || announcement.propertyType === 'FAMILY_HOUSE' ">
+        <div class="announcement__property-title">{{announcement.property.numberOfRooms}} rooms</div>
+        <div class="announcement__property-subtitle">total</div>
+      </div>
+    </div>
+    <div class="announcement__owner">
+      <div class="announcement__owner-image">
+        <ng-container *ngIf="announcement.property.owner.imagePath; else noImage">
+          <img [src]="getUserImage(announcement.property.owner.imagePath)" alt="image">
+        </ng-container>
+        <ng-template #noImage>
+          <fa-icon [icon]="noImageIcon"></fa-icon>
+        </ng-template>
+      </div>
+      <div class="announcement__owner-data">
+        <div class="announcement__owner-name">{{announcement.property.owner.firstName}} {{announcement.property.owner.lastName}}</div>
+        <div class="announcement__owner-title">owner</div>
+      </div>
+      <div class="announcement__owner-write">
+        <dx-button
+        stylingMode="contained"
+        text="Write to the owner"
+        type="default"
+        [width]="200"
+        (onClick)="writeToOwner()">
+        </dx-button>
+      </div>
+    </div>
+    <div class="announcement__full-desrc" *ngIf="announcement.propertyType === 'APARTMENT' || announcement.propertyType === 'FAMILY_HOUSE' ">
+      <div class="announcement__full-desrc-title">About building</div>
+      <div class="announcement__full-desrc-item">
+        <div class="announcement__full-desrc-elem">Building year</div>
+        <div class="announcement__full-desrc-elem">{{announcement.property.house.buildingYear}}</div>
+      </div>
+      <div class="announcement__full-desrc-item">
+        <div class="announcement__full-desrc-elem">Number of floors</div>
+        <div class="announcement__full-desrc-elem">{{announcement.property.house.numberOfFloors}}</div>
+      </div>
+      <div class="announcement__full-desrc-item">
+        <div class="announcement__full-desrc-elem">Type</div>
+        <div class="announcement__full-desrc-elem">{{announcement.property.house.housingType}}</div>
+      </div>
+      <div class="announcement__full-desrc-item">
+        <div class="announcement__full-desrc-elem">Material</div>
+        <div class="announcement__full-desrc-elem">{{announcement.property.house.houseMaterial}}</div>
+      </div>
+    </div>
+  </div>
+</div>

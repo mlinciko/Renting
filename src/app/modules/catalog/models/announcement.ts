@@ -1,7 +1,7 @@
 import { AnnouncementRentType } from "./announcement-rent-type";
-import { IFamilyHouse } from "./family-house";
-import { IHouse } from "./house.interface";
-import { IOwner } from "./owner";
+import { IAppartment } from "./appartment.interface";
+import { IFamilyHouse } from "./family-house.interface";
+import { ILand } from "./land.interface";
 
 export interface IAnnouncement {
   closedDt: string,
@@ -10,17 +10,9 @@ export interface IAnnouncement {
   id: number,
   imagePathList: string[],
   price: number,
-  property: {
-    area: number,
-    owner: IOwner,
-    id: number
-    numberOfRooms: number,
-    renovationType: string,
-    status: string,
-    house?: IHouse, 
-    familyHouse?: IFamilyHouse,
-  },
+  property: IAppartment & IFamilyHouse & ILand,
   status: string,
   top: boolean,
   type: AnnouncementRentType,
+  propertyType: "APARTMENT" | "FAMILY_HOUSE" | "LAND",
 }
